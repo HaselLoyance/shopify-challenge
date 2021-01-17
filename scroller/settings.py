@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if DEBUG:
+    ALLOWED_HOSTS.append('*')
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 2 ** 24
 
 # Application definition
 
@@ -38,13 +42,20 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-#    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-#    'django.middleware.csrf.CsrfViewMiddleware',
-#    'django.contrib.auth.middleware.AuthenticationMiddleware',
-#    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'scroller',
+        'USER': 'root',
+        'PASSWORD': 'epicpass',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
 
 ROOT_URLCONF = 'scroller.urls'
 

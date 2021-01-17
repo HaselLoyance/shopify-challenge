@@ -1,1 +1,21 @@
-The future is coming!
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Image scroller</title>
+        {% load static %}
+        <script src="{% static 'app/js/lzma-d.min.js'%}"></script>
+        <script src="{% static 'app/js/base64-arraybuffer.min.js'%}"></script>
+        <script src="{% static 'app/js/index.js'%}"></script>
+        <link href="{% static 'app/css/index.css'%}" rel="stylesheet" />
+    </head>
+    <body style="background-color:hsl(0, 90%, 60%);">
+        <div id="drop-area">
+            <h1>Drop files here</h1>
+        </div>
+        <div class="selector-wrap">
+            <input id="hue-selector" type="range" max="255" min="0" value="0"/>
+        </div>
+    </body>
+</html>
