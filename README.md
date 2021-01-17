@@ -38,7 +38,9 @@ The best dataset of pictures to test this app on is the This Waifu Does Not Exis
 
 ### Rough benchmarks
 On my old laptop it took a little under 3 minutes to bulk upload (and process dominant colors) 4000 JPEG images with a total size of ~820MB.
+
 One must understand that Django's development server is very limited (everything is being executed in a single thread), and for its full potential the WSGI app needs to be executed behind some other web server like Apache. But to reduce the amount of prerequisites to run the code I did not set up the proper production-ready environment (as it would also require a chain of caches, and ye know, probably out of the scope of the test project).
+
 Also, ideally the production-ready environment would be on a separate machine (and network), as files were concurrently read and written from and to the disk of my laptop during the benchmark. This, of course, also affects the performance.
 
 ### Known issues
