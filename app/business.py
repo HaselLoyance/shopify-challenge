@@ -1,4 +1,5 @@
 from django.core.files.base import ContentFile
+from django.utils import timezone
 from app.models import Image
 from app.helpers import (
     bgr_to_hsv,
@@ -81,4 +82,5 @@ def create_image_instance(data: str, is_local=True) -> Union[None, Image]:
     return None
 
 
-
+def delete_image(id: int) -> None:
+    Image.objects.filter(id=id, effective_to=None).update(effective_to=timezone.now())

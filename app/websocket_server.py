@@ -1,5 +1,5 @@
 from app.query import get_n_random_images_with_hue_and_margin
-from app.business import save_images
+from app.business import save_images, delete_image
 from asgiref.sync import sync_to_async
 import websockets
 import asyncio
@@ -60,6 +60,10 @@ async def more_images_handler(websocket, hue: int) -> None:
     await websocket.send(encode_payload(payload))
 
 
+async def delete_image_handler(image_id: int) -> None:
+    await sync_to_async(delete_image)(image_id)
+
+
 async def message_handler(websocket, payload) -> None:
     message = decode_payload(payload)
 
@@ -67,6 +71,9 @@ async def message_handler(websocket, payload) -> None:
         await more_images_handler(websocket, int(message['hue']))
     elif message['type'] == 'new_images':
         await new_images_handler(message['images'])
+    elif message['type'] == 'delete_image':
+        await delete_image_handler(int(message['image']))
+
 
 async def connection_handler(websocket, path: str) -> None:
     try:
