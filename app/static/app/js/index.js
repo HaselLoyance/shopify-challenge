@@ -34,6 +34,10 @@ const moreImagesHandler = (images) => {
             };
         });
     }
+
+    if (images.length === 0) {
+        pendingRequestForMoreImages = false;
+    }
 };
 
 const ws = new WebSocket(`ws://${window.location.hostname}:8001`);
