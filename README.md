@@ -34,7 +34,11 @@ The user has an ability to drag and drop pictures in bulk to upload to the datab
 6.  Navigate to `127.0.0.1:8000`
 
 ### The perfect dataset
-The best dataset of pictures to test this app on is the This Waifu Does Not Exist archive, available [here](https://www.gwern.net/TWDNE#downloads). It is an archive of AI-generated anime faces that come in all colors (and forms!) and that's what makes it perfect for testing. Credit: [Gwern Branwen](https://www.gwern.net/index).
+The best dataset of pictures to test this app on is the This Waifu Does Not Exist archive, available [here](https://www.gwern.net/TWDNE#downloads) (requires rsync). It is an archive of AI-generated anime faces that come in all colors (and forms!) and that's what makes it perfect for testing
+
+For testing purposes a zip archive of 5000 images is available [here](https://drive.google.com/file/d/1GUSA43sT65v7tDA-ajM-qY3pIjYJGYTA/view?usp=sharing).
+
+Credit: [Gwern Branwen](https://www.gwern.net/index).
 
 ### Rough benchmarks
 On my old laptop it took a little under 3 minutes to bulk upload (and process dominant colors) 4000 JPEG images with a total size of ~820MB.
