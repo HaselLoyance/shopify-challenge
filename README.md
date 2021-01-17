@@ -1,6 +1,8 @@
 # shopify-challenge
 A Django app that lets user upload colorful pictures and select what color of pictures to display in an infinite scroller.
 
+![demo](demo.png)
+
 The user has an ability to drag and drop pictures in bulk to upload to the database, as well as to delete images from the database by clicking on them.
 
 ### The flow
