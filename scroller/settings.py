@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 if DEBUG:
     ALLOWED_HOSTS.append('*')
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 2 ** 24
+DATA_UPLOAD_MAX_MEMORY_SIZE = 2 ** 27
 
 # Application definition
 

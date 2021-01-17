@@ -1,5 +1,5 @@
 const UPLOAD_IMAGES_CHUNK_SIZE = 16; // How many images are going together in one request
-const UPLOAD_IMAGES_MAX_SIZE = 512 * 1024; // 512kb
+const UPLOAD_IMAGES_MAX_SIZE = 8 * 1024 * 1024; // 8mb
 const COLUMN_MOVE_SPEED_PX = 2.5;
 
 const encodePayload = (payload) => JSON.stringify(payload);
@@ -108,19 +108,21 @@ const dropHandler = (event) => {
 
     // Separate all files to upload into several chunks. Also, check file extension to only accept
     //   images. And also limit the input files by size
-    for (let i = 0; i < files.length; i++) {
+    for (let i = 0, j = 0; i < files.length; i++) {
         let file = files[i];
 
         if ((!file.name.endsWith('.png') && !file.name.endsWith('.jpg') && !file.name.endsWith('.jpeg')) || file.size > UPLOAD_IMAGES_MAX_SIZE) {
+            console.log('skipping', file.size > UPLOAD_IMAGES_MAX_SIZE, file.size)
             continue;
         }
 
         // Chunk splitting
-        if (i === 0 || i % UPLOAD_IMAGES_CHUNK_SIZE === 0) {
+        if (j === 0 || j % UPLOAD_IMAGES_CHUNK_SIZE === 0) {
             fileChunks.push([]);
         }
 
         fileChunks[fileChunks.length - 1].push(files[i]);
+        j++;
     }
 
     fileChunks.forEach(uploadImages);

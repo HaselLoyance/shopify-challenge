@@ -14,7 +14,7 @@ import uuid
 from typing import List, Union, Tuple
 
 # How big the images' largest dimension should be (pixels)
-MAX_DIM = 300
+MAX_DIM = 400
 
 # How many dominant colors we must extract from the picture. Must be at most 4, since that's what the model supports
 DOMINANT_COLORS = 4 

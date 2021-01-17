@@ -43,7 +43,7 @@ def get_cv_image_from_b64str(b64str: str):
     return cv2.imdecode(byte_array, cv2.IMREAD_COLOR)
 
 
-def scale_cv_image_to_max_dim(cv_image, max_dim: int, algorithm=cv2.INTER_LANCZOS4):
+def scale_cv_image_to_max_dim(cv_image, max_dim: int, algorithm=cv2.INTER_CUBIC):
     width = cv_image.shape[1]
     height = cv_image.shape[0]
 
