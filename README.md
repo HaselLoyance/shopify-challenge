@@ -1,5 +1,5 @@
 # shopify-challenge
-A Django app that lets user upload colorful pictures and select what color of pictures to display in an infinite scroller.
+A Django app that lets user upload colorful pictures and select what color of pictures to display in an infinite scroller in realtime via websockets.
 
 ![demo](demo.png)
 
@@ -7,7 +7,7 @@ The user has an ability to drag and drop pictures in bulk to upload to the datab
 
 ### The flow
 **Uploading**
-- User drags and drops file onto the page
+- User drags and drops files onto the page
 - The files get combined into reasonably sized chunks and are uploaded together to the server via regular POST
 - Each image is processed in order to extract its 4 dominant colors, while also ignoring any boring colors like white, black and shades of gray.
 - Image data is scaled down, compressed via LZMA and stored on the disk
@@ -17,8 +17,8 @@ The user has an ability to drag and drop pictures in bulk to upload to the datab
 - On page load a connection is open to the websocket server
 - The websocket server queries the database of stored images to get images that fuzzily match `hue=0`in one of the stored dominant colors
 - The websocket server then responds with a set of 20 initial images that fuzzily matched `hue=0`
-- The websocket client decompresses received images and puts them into the scroller
-- On change of hue by the range input the same steps are repeated, but with a different hue and with only 10 returned images
+- The websocket client decompresses received images and puts them into the scroller columns
+- On change of hue via the range input the same steps are repeated, but with a different hue and with only 10 returned images
 - On click on the image a websocket request is sent to the websocket server to soft-delete the image from the database
 
 ### Requirements
